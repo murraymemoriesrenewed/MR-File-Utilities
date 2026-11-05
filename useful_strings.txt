@@ -1,0 +1,17 @@
+USEFUL STRINGS
+==============
+A handy list of text strings you use often, one per line.
+- Double-click a line (or select it and click "Copy Selected") to copy
+  it to the clipboard, ready to paste.
+- Click "Edit List" to add, change, reorder or delete strings. Type one
+  string per line; blank lines are ignored. Click Save to keep changes.
+The list is saved in "useful_strings.txt" in the same folder as the
+program, so it stays the same each time you open the app.
+==============
+~"*(1).jpg"
+~"*(1).tif"
+*title
+*dupe
+~*.ini OR ~*.txt OR ~*.sys OR ~*.dll OR ~*.tmp
+~"*1.jpg" OR ~"*3.jpg" OR ~"*5.jpg" OR ~"*7.jpg" OR ~"*9.jpg"
+xx scans - xx titles  - xx duds/dupes = xx files

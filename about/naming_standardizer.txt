@@ -1,0 +1,214 @@
+NAMING STANDARDIZER
+===================
+
+What it does
+------------
+Checks every folder name under a directory you choose and proposes a
+corrected name that follows the Memories Renewed directory naming
+standards. You review the proposed changes, untick any you don't want, and
+then apply the ones you've kept. Only FOLDER names are changed - files are
+never touched.
+
+How to use it
+-------------
+ 1. (Optional) Set "Max name length" - the longest folder name allowed.
+    The default is 50 characters.
+ 2. Click "Select Directory and Preview" and pick the top folder. Every
+    folder inside it, at every level, is checked. Hidden folders (names
+    starting with ".") are skipped.
+ 3. The table lists EVERY folder: its previous name, its new name (with the
+    length of each in brackets), the fixes applied, and any notes for you to
+    review. A folder that needs no fix simply shows its previous name as the
+    new name.
+ 4. Ticked rows are the ones that will be renamed. A folder with a suggested
+    fix starts ticked; a folder with no suggested fix starts unticked.
+    Untick the changes you don't want, or use "Select All" / "Select None".
+ 5. If you don't like a suggested name - or want to rename a folder that had
+    no suggestion - click its New Name box and type your own. Typing a
+    different name ticks the row automatically (see "Editing a suggested
+    name" below).
+ 6. Click "Apply Selected Renames" and confirm. The Status column then shows
+    what happened to each folder.
+
+Select and Preview buttons
+--------------------------
+    Select All          Ticks every folder whose New Name differs from its
+                        Previous Name (ticking a row that would not change
+                        anything has no effect).
+    Select None         Unticks every folder.
+    Preview Selected    Lists only the ticked folders, so you can check
+                        exactly what will be renamed.
+    Preview Unselected  Lists only the unticked folders - the ones that will
+                        be left alone.
+    Preview All         Lists every folder again.
+The line above the tally says which view is showing and how many folders it
+lists. The view is a snapshot taken when you click: if you tick or untick a
+row while looking at "Preview Selected", the row stays on screen until you
+click a Preview button again. After you apply, "Preview Selected" lists the
+folders that were chosen for renaming.
+
+Big directories are shown a page at a time (100 folders per page) with
+"< Prev" and "Next >" buttons under the table. Everything you have ticked or
+typed is kept when you change pages, and the buttons and the counts below
+apply to all the folders, not just the page on screen.
+
+The line under the table shows the total folders scanned, how many have
+proposed fixes, how many are currently ticked ("Selected" - it changes as you
+tick and untick), how many folders are flagged for review, and how many names
+you have edited. After you apply, "Selected" is replaced by how many folders
+were renamed and how many were not.
+
+Editing a suggested name
+------------------------
+The New Name column is a text box pre-filled with the name the utility
+suggests (or, for a folder with no suggested fix, with its previous name).
+Click in it and change it to anything you like; the folder will be renamed to
+exactly what is in the box when you click "Apply Selected Renames".
+
+  * Typing a name different from the suggestion ticks the row for you.
+  * A number next to the box shows the name's length. It turns red when the
+    name is longer than "Max name length". Going over is allowed - the
+    limit is a guide for your own names - and the confirmation message tells
+    you how many chosen names are over.
+  * A box you have changed is highlighted. Click "Reset" beside it to put
+    the suggestion back. For a folder with no suggested fix, putting its
+    previous name back unticks the row again.
+  * If you tick a folder and then type its ORIGINAL name back into the box,
+    the folder is simply left as it is (Status: "Skipped (kept the original
+    name)").
+  * Leading and trailing spaces you type are removed.
+  * Before anything is renamed, every chosen name is checked. The rename
+    does not start, and you are told which names to fix, if a name:
+       - is empty;
+       - contains any of  \ / : * ? " < > |  or a control character;
+       - ends with a space or a period;
+       - is a reserved Windows name (CON, PRN, AUX, NUL, COM1-COM9,
+         LPT1-LPT9);
+       - is the same as another folder in the same directory, whether that
+         folder is also being renamed or is staying as it is (capital
+         letters don't count as a difference).
+  * Folders you renamed with your own text show "Renamed (edited name)" in
+    the Status column afterward, and "[edited by you]" beside the new name.
+  * Typing your own name replaces the automatic length limit and any
+    "(1)" suffix for that folder - the name you typed is used as it is.
+  * Only ticked folders are renamed. A folder you typed a name into but then
+    unticked shows "Skipped (not selected)"; a folder with no fix that you
+    left alone shows "No change needed".
+
+The fixes, in the order they are applied
+----------------------------------------
+ 1. "Group NN" at the very start of a name is set aside, zero-padded
+    (Group 3 -> Group 03) and put back at the front, followed by " - ".
+    Everything below is applied to the rest of the name.
+ 2. Extra spaces are collapsed and the name is trimmed.
+ 3. ", Etc" is always removed, in any capitalization (", etc", ", ETC.").
+    It must be the whole word - ", Etcetera" is left alone. The check is
+    made again after the dash and "and" fixes below, so "Aunt Sue and Etc"
+    and "Beach Trip - Etc" are caught too.
+ 4. Phrases that only describe the physical format and carry no content are
+    always removed: 35mm Format, 120 Format, 110 Format, 127 Format,
+    126 Format, Medium Format, Adhesive, Pocket, Full Page.
+ 5. "&" becomes "and" and "+" becomes "Plus".
+ 6. Known abbreviations are expanded to the full word (for example Bday ->
+    Birthday, Xmas -> Christmas, Gma -> Grandmother, Anniv -> Anniversary,
+    Grad -> Graduation). Sr, Jr, Dr, Mr and Mrs are never expanded.
+ 7. The word "and" between subjects becomes a comma
+    (Mom and Dad -> Mom, Dad).
+ 8. Decades lose their apostrophe: 1980's -> 1980s.
+ 9. Periods are removed from acronyms: U.S.A. -> USA.
+10. Two-digit years written with an apostrophe become four digits:
+    '84 -> 1984 ('00 to '29 are 20xx, '30 to '99 are 19xx).
+11. The date is found wherever it appears in the name, moved to the front,
+    and written as YYYY-MM-DD, YYYY-MM or YYYY:
+       Beach Trip June 1957            ->  1957-06 Beach Trip
+       07-22-1994 Reunion              ->  1994-07-22 Reunion
+       January 1980 up to April 1981   ->  1980-01 to 1981-04
+       Summer 1977 Camp                ->  1977 Summer, Camp
+    Dashes, commas or semicolons touching the date are dropped.
+12. Dashes used to separate parts of the title become commas.
+13. "Group NN" appearing anywhere else in the name is zero-padded and
+    followed by " - ".
+14. Capitalization is tidied (Title Case). Small words such as "of", "the"
+    and "at" stay lower case in the middle of a part of the name; acronyms
+    (ABC), names with internal capitals (McDonald) and words starting with
+    a digit are left alone.
+
+No trailing punctuation
+-----------------------
+As the very last step, every suggested name is checked from the right. Any
+punctuation mark, dash, apostrophe, symbol or space at the END is removed,
+so a name always finishes on a letter or a number:
+     1985 Beach Trip -         ->  1985 Beach Trip
+     1985 Beach Trip,          ->  1985 Beach Trip
+     1990 Picnic with Jr.      ->  1990 Picnic with Jr
+     Grandparents'             ->  Grandparents
+The one exception is a closing bracket that matches an opening one, such as
+"Trip (Part 2)" or the " (1)" duplicate suffix described below. The fixes
+column shows "Removed trailing punctuation" with what was taken off. This
+applies to the names the utility suggests; a name you type yourself is used
+as you typed it (apart from the checks in "Editing a suggested name").
+
+Keeping names within the length limit
+-------------------------------------
+If a name is still longer than "Max name length" after the fixes above, it
+is shortened step by step, stopping as soon as it fits:
+
+  a. The day is dropped from full dates (1994-07-22 -> 1994-07).
+  b. Filler words are removed: photo(s), slide(s), negative(s), album(s),
+     format(s), the, a.
+  c. Connector words are removed: with, in.
+  d. Repeated words are removed (the first use of each word is kept).
+  e. Known terms are abbreviated (for example Birthday -> Bday,
+     Christmas -> Xmas, Grandmother -> Gmother, Anniversary -> Anniv,
+     Graduation -> Grad).
+  f. LAST STEP - truncation. If the name is STILL too long, it is cut from
+     the right back to the last comma that falls within the limit, and the
+     comma is dropped. For example
+         1985 Xmas Gmother Rose, Gfather Joe, Aunt Susan, Uncle Robert
+     becomes
+         1985 Xmas Gmother Rose, Gfather Joe, Aunt Susan
+     If there is no comma within the limit, the name is simply cut at the
+     limit. Any punctuation left dangling at the end is removed.
+     The fixes column records "Truncated at the last comma ..." with the
+     old and new lengths, so you can see which names were cut.
+
+     Truncation is the only step that discards text, so check these rows
+     before applying.
+
+Duplicate names after truncation
+--------------------------------
+If truncation leaves two or more folders in the same directory with the
+same name (or with the name of a file or folder already there), the first
+keeps the plain name and the others get a sequential suffix:
+
+     1985 Xmas Gmother Rose, Gfather Joe, Aunt Susan
+     1985 Xmas Gmother Rose, Gfather Joe (1)
+     1985 Xmas Gmother Rose, Gfather Joe (2)
+
+Folders are taken in alphabetical order of their ORIGINAL names. If adding
+the suffix would push a name over the limit, the name is cut back (again to
+the last comma) first, so the finished name, suffix included, never exceeds
+"Max name length". The fixes column notes where a suffix was added.
+
+Notes for review
+----------------
+Some names are flagged for you to look at, but are never changed
+automatically:
+  * No year or date was found - consider adding a YYYY-MM-DD prefix.
+  * The same possessive is repeated across parts (Bobby's Birthday, Bobby's
+    Confirmation) - consider "Bobby, ..." instead.
+  * Several "people at an event" groups are separated by commas - consider
+    semicolons between the groups.
+
+Things to know
+--------------
+  * Folders are renamed from the deepest level upward, so renaming a parent
+    never breaks the path to a child.
+  * If a new name is already taken by something that is not part of this
+    run (for example a file with that name), the folder is skipped and its
+    Status says so. Nothing is overwritten. Changing only the capital
+    letters of a name (birthday party -> Birthday Party) is allowed.
+  * There is no undo. Review the list first, and try a copy of your folders
+    before running on the real archive.
+  * The Directory Truncater tab applies only the truncation rule on its own,
+    without any of the other fixes.

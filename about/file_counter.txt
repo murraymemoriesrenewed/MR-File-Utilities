@@ -1,0 +1,49 @@
+FILE COUNTER
+============
+
+What it does
+------------
+Counts the files in a job folder and breaks them down by format type, so
+you can quickly see how many negatives, photos or slides of each kind are
+there. Nothing on disk is changed.
+
+How to use it
+-------------
+1. Choose the format: Negatives, Photos or Slides.
+2. Click "Select Directory and Run" and pick the folder to analyze.
+3. Read the results in the box below.
+
+How it groups and counts
+------------------------
+Each format has its own list of search terms:
+
+  Negatives: 120 Format, 35mm, 110 Format, 126 Format, 127 Format, 4x5,
+             APS, medium, stereo, large
+  Photos:    memo, pocket, adhe, large, merge, full, back, frame
+  Slides:    120 Format, 35mm, 110 Format, 126 Format, 127 Format, 4x5,
+             stereo, large, AireQ
+
+- Folders: each folder is put in a group based on the FIRST search term
+  found in its name (matching ignores upper/lower case). Folders that don't
+  match any term go in the "other" group. Folder groups are shown as
+  "d-<term>".
+- Files: each file is counted under every search term found in its file
+  name ("f-<term>" columns). Files that match none are counted as
+  "f-other".
+
+The results
+-----------
+1. A summary table with one row per folder group: the number of folders,
+   file counts per term, and a row total, followed by a grand TOTAL row.
+2. A listing for each group showing every folder with its file count and
+   the length of its name in characters, for example:
+       245  |  1977 Summer, Fishing (20)
+   This makes it easy to spot names over the 50-character limit.
+
+Good to know
+------------
+- Hidden files and folders (starting with ".") are ignored.
+- Folders that can't be read (permissions) are skipped.
+- A file whose name contains more than one term is counted under each of
+  them, so the group row totals can add up to more than the real number of
+  files. The last number in the TOTAL row is always the true file count.

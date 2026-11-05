@@ -1,0 +1,36 @@
+DIRECTORY TRUNCATER
+===================
+
+What it does
+------------
+Shortens folder names that are longer than a set limit (50 characters by
+default). Instead of chopping a word in half, it cuts the name back to the
+last comma that falls within the limit, so the result ends at a natural
+break.
+
+  Example:  "Event Name, 2024, Extra Details From The Trip"
+        ->  "Event Name, 2024"
+
+If a long name has no comma within the limit, it is simply cut off at the
+limit.
+
+How to use it
+-------------
+1. Click Browse... and choose the PARENT folder. The folders inside it are
+   the ones that get renamed.
+2. Set "Max name length" if you want something other than 50.
+3. Tick "Also rename nested subfolders" to process folders at every level,
+   not just the ones directly inside the parent.
+4. Click "Preview (dry run)" to see what would change. Nothing is renamed.
+5. When you're happy with the preview, click "Rename Folders" and confirm.
+
+Good to know
+------------
+- Only folder names are changed. Files are never touched.
+- If the shortened name already exists, " (1)", " (2)", etc. is added so
+  nothing is overwritten.
+- With nested subfolders on, the deepest folders are renamed first so the
+  paths to the others stay valid.
+- A folder that can't be renamed (for example, because it's open in another
+  program) is listed in the log and skipped. The rest still run.
+- Renames can't be undone from this tool, so always Preview first.

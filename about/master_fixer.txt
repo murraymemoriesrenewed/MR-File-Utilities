@@ -1,0 +1,106 @@
+MASTER FIXER
+============
+
+What it does
+------------
+Runs the Metadata-er and/or the Naming Standardizer on a directory in one
+pass, so you don't have to run them one after the other on separate tabs.
+Tick one or both. If you tick both, the Metadata-er ALWAYS runs first and
+the Naming Standardizer second.
+
+Why the order matters
+---------------------
+The Metadata-er copies each file's folder name into the file's properties.
+Because it runs before any folders are renamed, the properties receive the
+folder names exactly as they are NOW - before the Naming Standardizer
+changes them. If you would rather have the properties hold the corrected
+names, run the Naming Standardizer first on its own tab, and then run
+Master Fixer with only the Metadata-er ticked.
+
+How to use it
+-------------
+ 1. Click "Browse..." and choose the top directory. Everything inside it,
+    including nested folders, is processed.
+ 2. Tick Metadata-er, Naming Standardizer, or both. At least one must stay
+    ticked.
+ 3. Set the options for each utility you ticked (see below). Options for an
+    unticked utility are greyed out.
+ 4. Click "Preview". Nothing is changed. The Metadata-er preview appears in
+    the log, and the Naming Standardizer's proposed renames appear in the
+    table, exactly as on the Naming Standardizer tab.
+ 5. Review the table: untick any rename you don't want, and click a New Name
+    box to type your own name (see "Reviewing the proposed names
+----------------------------
+The table is the same one the Naming Standardizer tab uses, and it lists
+EVERY folder (a folder that needs no fix shows its previous name as the new
+name):
+    Checkbox       Ticked rows are renamed. A folder with a suggested fix
+                   starts ticked, one with no fix starts unticked, and
+                   typing a different name in the New Name box ticks the row
+                   for you. "Select All" ticks every folder whose new name
+                   differs from its previous name; "Select None" unticks all.
+    Previous Name  The folder's current name and its length.
+    New Name       The suggested name in a box you can overwrite. A counter
+                   shows the length (red when over the maximum), the box
+                   turns yellow once you edit it, and "Reset" puts the
+                   suggestion back.
+    Proposed Fixes The fixes applied and any notes flagged for review.
+    Status         Filled in after the run: Renamed, Renamed (edited name),
+                   Skipped (not selected), Skipped (target name already
+                   exists), No change needed, and so on.
+"Preview Selected", "Preview Unselected" and "Preview All" choose which
+folders are listed (only the ticked ones, only the unticked ones, or all).
+Big directories are shown 100 folders at a time with "< Prev" / "Next >"
+buttons; your ticks and typed names are kept when you change pages. The line
+under the table counts scanned, proposed, selected, flagged and edited
+folders (for the whole table) and updates as you work.
+Before anything is changed, every edited name is checked: it cannot be
+empty, contain \ / : * ? " < > |, end in a space or period, be a reserved
+Windows name (CON, NUL, COM1...), or match another folder's name in the same
+directory. If any name fails, the run stops and lists them so you can fix
+them. A name you type may be longer than the maximum; the confirmation
+message tells you how many are.
+
+The table belongs to the directory and Max name length you previewed. If you
+change either, or after folders have been renamed, click Preview again
+before the next run. A Metadata-er-only run does not need a Preview.
+
+Buttons
+-------
+Preview            Shows, for each utility you ticked:
+                     Metadata-er - in the log, each folder with its file
+                     count and the fields that would be set.
+                     Naming Standardizer - the proposed renames in the table.
+Run Master Fixer   Does the work. The log shows each step as it happens and
+                   ends with a summary: files updated, files already up to
+                   date, failures, and folders renamed or skipped. Afterwards
+                   the table shows the outcome for each folder.
+Cancel             Stops a run in progress. If you cancel during the
+                   Metadata-er step, NO folders are renamed (the table stays
+                   as it was, so you can run again). Files already written
+                   stay written.
+Clear Log          Empties the log window.
+
+Difference from the Naming Standardizer tab
+-------------------------------------------
+The Naming Standardizer tab only renames folders. Master Fixer offers the
+same preview table and editing, but lets you run the Metadata-er BEFORE any
+folder name is changed - so each file's properties receive the folder names
+as they are now, not the corrected ones. (To give the properties the
+corrected names instead, run the Naming Standardizer first, then run Master
+Fixer with only the Metadata-er ticked.)
+
+Notes
+-----
+  * Writing metadata needs Windows. On other systems Preview works, and the
+    Naming Standardizer can be run on its own.
+  * If a folder's new name is already taken by something that is not part of
+    the run, that folder is skipped and the log says so. Nothing is
+    overwritten.
+  * Folders are renamed from the deepest level upward, so renaming a folder
+    never disturbs the folders inside it.
+  * Files that cannot hold properties (for example plain .txt files) are
+    reported as failures by the Metadata-er step and summarised by file
+    type. This does not stop the run.
+  * There is no undo. Run Preview first, and try a copy of your files before
+    running on the real archive.

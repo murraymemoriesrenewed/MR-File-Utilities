@@ -1,0 +1,44 @@
+DIRECTORY COMPARE
+=================
+
+What it does
+------------
+Compares two folders (for example, an original scan set and its backup or
+edited copy) and reports every difference between them. Nothing on disk is
+changed. It only reads and reports.
+
+Results tabs
+------------
+- Only in Dir 1      Files that exist in Directory 1 but not in Directory 2.
+- Only in Dir 2      Files that exist in Directory 2 but not in Directory 1.
+- Differing          Files in both places with the same name but different
+                     contents: a different size, or (if content checking is
+                     on) a different SHA-256 fingerprint.
+- Possible Unedited  Files in both places with exactly the same last-modified
+                     time. A file that was really edited and re-saved would
+                     normally get a new time, so these may not have been
+                     worked on yet.
+- Errors             Files or folders that couldn't be read (permissions,
+                     etc.).
+
+A summary line shows the total file count for each folder and how many
+files fall into each category.
+
+How to use it
+-------------
+1. Choose Directory 1 and Directory 2 with the Browse... buttons.
+2. Options:
+   - Include subfolders: compare everything inside, not just the top level.
+   - Compare file contents (SHA-256): slower, but catches files that are
+     the same size yet different inside (for example, corrupted copies).
+3. Click Compare. Large photo sets can take a while. Use Cancel to stop.
+4. Click "Save Report..." to save the results as a text report (.txt) or a
+   full spreadsheet-friendly list (.csv, which also includes matching
+   files).
+
+Good to know
+------------
+- Files are matched by their path relative to each chosen folder, so the
+  folder structure needs to be the same on both sides to line up.
+- Timestamps are compared to the whole second, since copying between drives
+  can round fractions of a second differently.

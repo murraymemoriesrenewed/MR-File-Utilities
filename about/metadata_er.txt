@@ -1,0 +1,77 @@
+METADATA-ER
+===========
+
+What it does
+------------
+Copies the name of the folder each file is stored in into that file's
+properties, so the folder name travels with the file.
+
+For every file in the directory you choose - including files in nested
+subfolders - the NAME of the folder the file sits in (not the full path)
+is written to the file's properties. For example, a file at
+
+    D:\Archive\1985-06 Beach Trip\img001.jpg
+
+gets the text "1985-06 Beach Trip". Files directly inside the folder you
+pick get that folder's name.
+
+Fields
+------
+Tick which properties to fill. At least one must stay ticked:
+
+    Title      - the "Title" property
+    Subject    - the "Subject" property
+    Comments   - the "Comments" property
+
+These are the same fields shown on the Details tab when you right-click a
+file in Windows Explorer and choose Properties.
+
+Any existing value in a ticked field is OVERWRITTEN. Fields you leave
+unticked are not touched.
+
+Keep each file's original Modified date
+---------------------------------------
+Writing properties normally updates a file's Modified date. With this box
+ticked (the default) the original Modified date is put back after each
+file is written, so tools that rely on it - such as the Possible Unedited
+check in Directory Compare - are not thrown off.
+
+Files processed at once
+-----------------------
+Several files are written at the same time, which is much faster than one
+after another. The default is a sensible number for your computer; raise
+it (up to 16) to go faster on a fast drive, or lower it to 1-2 if the files
+are on a slow external or network drive. Files that already hold the right
+text are detected and left alone, so re-running on the same folder (or
+resuming after a Cancel) is quick.
+
+Buttons
+-------
+    Browse...           Choose the directory to process.
+    Preview (dry run)   Lists each folder, how many files it holds and the
+                        text that would be written. Changes nothing.
+    Write Metadata      Does the work, after a confirmation prompt.
+    Cancel              Stops a run in progress (files already written
+                        stay written).
+    Clear Log           Empties the log window.
+
+Notes
+-----
+  * Windows only for writing. Preview works on any system.
+  * Works for file types Windows can write properties for - for example
+    JPG, TIFF, PDF, Office documents, MP3 and MP4. Types without property
+    support (such as plain .txt, or PNG in many cases) are reported as
+    failed in the log and summarised by file type at the end.
+  * Read-only files, or files open in another program, will fail and are
+    listed in the log.
+  * Hidden folders/files (names starting with ".") and Windows housekeeping
+    files (Thumbs.db, desktop.ini) are skipped.
+  * Only the fields you tick are written. Some file types, however, make
+    Windows change a related field itself (for example filling Subject when
+    Title is written). After each file is written the program checks the
+    fields you did NOT tick and, if Windows changed one, puts it back as it
+    was. The summary says how many files needed this. If a file type links
+    the fields so tightly they cannot be separated, that file is reported
+    as a failure instead of being left quietly altered.
+  * There is no undo. Run Preview first, and try a copy of your files
+    before running on the real archive.
